@@ -1,7 +1,9 @@
 import axios from "axios"
 
 const API = axios.create({
-  baseURL: "http://localhost:8000", // backend URL
+  baseURL: import.meta.env.DEV
+    ? "http://localhost:8000"
+    : "https://hrms-1pbn.onrender.com",
 })
 
 export default API
