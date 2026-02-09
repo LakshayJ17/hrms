@@ -30,12 +30,16 @@ export default function EmployeesPage() {
   }, [])
 
   const submit = async () => {
+    if (!form.employeeId || !form.fullName || !form.email || !form.department) {
+      setError("Please fill in all fields")
+      return
+    }
     try {
       await API.post("/employees", form)
       setForm({ employeeId: "", fullName: "", email: "", department: "" })
       fetchEmployees()
     } catch (err) {
-      setError(err.response?.data?.detail || "Failed to add employee")
+      setError(err?.response?.data?.detail || "Failed to add employee")
     }
   }
 
@@ -76,7 +80,7 @@ export default function EmployeesPage() {
 
         <button
           onClick={submit}
-          className="col-span-4 bg-black text-white py-2"
+          className="col-span-4 bg-black text-white py-2 cursor-pointer"
         >
           Add Employee
         </button>
@@ -96,7 +100,7 @@ export default function EmployeesPage() {
         <table className="w-full border text-sm">
           <thead className="bg-gray-100">
             <tr>
-              <th className="p-2">ID</th>
+              <th className="p-3">ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Dept</th>
@@ -106,14 +110,14 @@ export default function EmployeesPage() {
           <tbody>
             {employees.map((e) => (
               <tr key={e.employeeId} className="border-t text-center">
-                <td>{e.employeeId}</td>
+                <td className="p-2">{e.employeeId}</td>
                 <td>{e.fullName}</td>
                 <td>{e.email}</td>
                 <td>{e.department}</td>
                 <td>
                   <button
                     onClick={() => remove(e.employeeId)}
-                    className="text-red-600"
+                    className="text-red-600 cursor-pointer hover:bg-red-600 hover:text-white"
                   >
                     Delete
                   </button>
