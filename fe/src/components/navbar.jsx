@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between gap-6 px-6 py-4 border-b">
+    <nav className="flex flex-col gap-4 px-6 py-4 border-b md:flex-row md:items-center md:justify-between">
       <h1 className="font-semibold text-lg">HRMS</h1>
 
-      <div className="space-x-10">
+      <div className="flex gap-6 md:gap-10">
         <NavLink
           to="/"
           className={({ isActive }) =>

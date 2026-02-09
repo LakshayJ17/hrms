@@ -59,9 +59,9 @@ export default function AttendancePage() {
     <div className="p-6">
       <h2 className="text-xl font-semibold mb-4">Attendance</h2>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-col gap-3 mb-4 md:flex-row md:items-center">
         <select
-          className="border p-2"
+          className="border p-2 w-full md:w-auto"
           value={form.employeeId}
           onChange={(e) => {
             const id = e.target.value;
@@ -83,13 +83,13 @@ export default function AttendancePage() {
 
         <input
           type="date"
-          className="border p-2"
+          className="border p-2 w-full md:w-auto"
           value={form.date}
           onChange={(e) => setForm({ ...form, date: e.target.value })}
         />
 
         <select
-          className="border p-2"
+          className="border p-2 w-full md:w-auto"
           value={form.status}
           onChange={(e) => setForm({ ...form, status: e.target.value })}
         >
@@ -97,7 +97,7 @@ export default function AttendancePage() {
           <option>Absent</option>
         </select>
 
-        <button onClick={mark} className="bg-black text-white px-4">
+        <button onClick={mark} className="bg-black text-white px-4 py-2 w-full md:w-auto">
           Mark
         </button>
       </div>
@@ -119,7 +119,8 @@ export default function AttendancePage() {
       )}
 
       {!loading && records.length > 0 && (
-        <table className="w-full border text-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full border text-sm min-w-[420px]">
           <thead className="bg-gray-100">
             <tr>
               <th className="p-2 text-left">Date</th>
@@ -134,7 +135,8 @@ export default function AttendancePage() {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       )}
     </div>
   );

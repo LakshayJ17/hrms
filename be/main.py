@@ -13,11 +13,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def root():
-    """To check server health"""
+@app.api_route("/health", methods=["GET", "HEAD"])
+def health():
+    return {"status": "ok"}
 
-    return {"message" : "Status 200 : OK"} 
 
 app.include_router(employee_router)
 app.include_router(attendance_router)

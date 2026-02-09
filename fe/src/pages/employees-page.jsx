@@ -60,27 +60,27 @@ export default function EmployeesPage() {
         <div className="mb-4 text-red-600 text-sm">{error}</div>
       )}
 
-      <div className="grid grid-cols-4 gap-2 mb-6">
-        <input className="border p-2" placeholder="Employee ID"
+      <div className="grid grid-cols-1 gap-3 mb-6 md:grid-cols-4 md:gap-2">
+        <input className="border p-2 w-full" placeholder="Employee ID"
           value={form.employeeId}
           onChange={(e) => setForm({ ...form, employeeId: e.target.value })}
         />
-        <input className="border p-2" placeholder="Full Name"
+        <input className="border p-2 w-full" placeholder="Full Name"
           value={form.fullName}
           onChange={(e) => setForm({ ...form, fullName: e.target.value })}
         />
-        <input className="border p-2" placeholder="Email"
+        <input className="border p-2 w-full" placeholder="Email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
-        <input className="border p-2" placeholder="Department"
+        <input className="border p-2 w-full" placeholder="Department"
           value={form.department}
           onChange={(e) => setForm({ ...form, department: e.target.value })}
         />
 
         <button
           onClick={submit}
-          className="col-span-4 bg-black text-white py-2 cursor-pointer"
+          className="col-span-1 md:col-span-4 bg-black text-white py-2 cursor-pointer w-full"
         >
           Add Employee
         </button>
@@ -97,7 +97,8 @@ export default function EmployeesPage() {
       )}
 
       {!loading && employees.length > 0 && (
-        <table className="w-full border text-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full border text-sm min-w-[520px]">
           <thead className="bg-gray-100">
             <tr>
               <th className="p-3">ID</th>
@@ -125,7 +126,8 @@ export default function EmployeesPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       )}
     </div>
   )
