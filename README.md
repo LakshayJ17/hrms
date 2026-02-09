@@ -1,4 +1,4 @@
-# HRMS Lite
+# HRMS
 
 ## Project Overview
 HRMS is a lightweight full-stack web app for managing employee records and daily attendance. It provides a simple admin interface to add and delete employees, mark attendance with a date and status, and view attendance history per employee.
